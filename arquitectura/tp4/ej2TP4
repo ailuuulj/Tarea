@@ -1,47 +1,14 @@
-#Escribir un programa que lea un número entero desde el teclado y calcule su tabla de
-#multiplicar del 1 al 10, mostrando cada resultado.
-.data
-mensaje:	.asciz "\nIngrese un numero: "
-mensajefin:	.asciz "\nEl resultado de la multiplicacion es: "
-fin: 		.asciz "\nfin"
-.text
-main:
-	#muestra mensaje	
-	li a7, 4
-	la a0, mensaje
-	ecall
-	
-	#guarda valor
-	li a7, 5
-	ecall
-	
-	mv t1, a0
-	li t2, 1
-	li t4, 12
-	
-loop:	
-	mul t3, t2, t1
-	addi t2, t2, 1	
-	beq t4, t2 terminar
-	bne t2, t4, mostrar
+#Escribir un programa que recorra un arreglo de 10 enteros (llamado TABLA) y cuente
+#cuántos son mayores que un valor X. Guardar el resultado en una dirección de memoria
+#etiquetada como CANT. Además, generar otro arreglo llamado RES, donde cada
+#elemento sea 1 si el valor correspondiente en TABLA es mayor que X, o 0 si es menor o
+#igual.
 
-mostrar:
-	li a7, 4
-	la a0, mensajefin
-	ecall
-	li a7, 1
-	addi a0, t3, 0
-	ecall
-	j loop
-	
-terminar:
-	li a7, 4
-	la a0, fin
-	ecall
-	
-	
-	
-	
-#a7 = 5 ? leer entero
-#a7 = 1 ? imprimir entero
-#a7 = 4 ? mensaje
+.data
+arreglo:	.word 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+X:		.word 6  
+.text
+
+main:
+	la t0, arreglo
+	la t1, X 
