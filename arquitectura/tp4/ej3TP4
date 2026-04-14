@@ -17,7 +17,7 @@ main:
 	li s0, 0	
 	
 	
-	lw s2, 0(t1)  # s2 <-- &t1
+	lw s0, 0(t1)  # s2 <-- &t1
 	
 	li s4, 4  #tam. del dato
 	
@@ -34,8 +34,9 @@ while: beqz s0 fin
 	
 
 	
-esmayor:
-	sub t
+esmayor: ##terminar funcion
+	sub st1, a0
+	
 	
 	
 	
